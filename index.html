@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Przeglądarka pytań ankietowych — Data Dictionary</title>
+
+<title>Data Dictionary</title>
 <style>
   :root{
     --bg:#f4f5f7; --panel:#ffffff; --ink:#1d2733; --muted:#667085; --line:#e3e6ea;
@@ -15,13 +16,14 @@
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    background:var(--bg);color:var(--ink);font-size:14px;line-height:1.45}
+    background:var(--bg);color:var(--ink);font-size:16px;line-height:1.45}
   a{color:var(--accent-ink)}
   header.top{background:var(--panel);border-bottom:1px solid var(--line);padding:14px 22px;
     position:sticky;top:0;z-index:20;box-shadow:var(--shadow)}
   header.top h1{margin:0;font-size:17px;font-weight:650;letter-spacing:.2px}
-  header.top .sub{color:var(--muted);font-size:12.5px;margin-top:2px}
+  header.top .sub{color:var(--muted);font-size:13px;margin-top:2px}
   .wrap{display:flex;gap:0;min-height:calc(100vh - 58px)}
+
   /* Sidebar filters */
   aside{width:288px;flex:0 0 288px;background:var(--panel);border-right:1px solid var(--line);
     padding:16px 16px 40px;overflow-y:auto;max-height:calc(100vh - 58px);position:sticky;top:58px}
@@ -136,35 +138,35 @@
 <body>
 <header class="top">
   <h1>Przeglądarka pytań ankietowych</h1>
-  <div class="sub">Data dictionary · codebook v17 &nbsp;—&nbsp; szukaj po treści, tagu, temacie, koncepcie; sprawdź w których falach występuje pytanie i jak jest kodowane.</div>
+  <div class="sub">Data dictionary · codebook v17 &nbsp;—&nbsp; Search by content, tag, topic, concept; check in which waves the question appears and how it is coded.</div>
 </header>
 <div class="wrap">
   <aside id="side">
     <div class="search-box">
       <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.49 4.49 0 0 1 9.5 14z"/></svg>
-      <input id="q" type="search" placeholder="Szukaj: treść, kod, koncept, tag…" autocomplete="off">
+      <input id="q" type="search" placeholder="Search: content, code, concept, tag…" autocomplete="off">
     </div>
     <h3>Survey</h3><div class="fgroup" id="f-survey"></div>
-    <h3>Wave (fala)</h3><div class="fgroup" id="f-wave"></div>
-    <h3>Typ zmiennej</h3><div class="fgroup" id="f-type"></div>
-    <h3>Temat (concept_path — 1. poziom)</h3><div class="fgroup" id="f-topic"></div>
-    <h3>Tagi</h3><div class="tagcloud" id="f-tags"></div>
-    <h3>Flagi jakości</h3><div class="fgroup" id="f-flags"></div>
-    <button class="clear" id="clearBtn">Wyczyść wszystkie filtry</button>
+    <h3>Wave</h3><div class="fgroup" id="f-wave"></div>
+    <h3>Variable type</h3><div class="fgroup" id="f-type"></div>
+    <h3>Topic (concept_path — 1. level)</h3><div class="fgroup" id="f-topic"></div>
+    <h3>Tags</h3><div class="tagcloud" id="f-tags"></div>
+    <h3>Quality flags</h3><div class="fgroup" id="f-flags"></div>
+    <button class="clear" id="clearBtn">Clear all filters</button>
   </aside>
   <main>
     <div class="toolbar">
-      <button class="menutoggle" id="menuToggle">☰ Filtry</button>
-      <span class="count"><b id="nShown">0</b> z <span id="nTotal">0</span> zmiennych</span>
+      <button class="menutoggle" id="menuToggle">☰ Filters</button>
+      <span class="count"><b id="nShown">0</b> z <span id="nTotal">0</span> variables</span>
       <select class="sort" id="sortSel">
-        <option value="code">Sortuj: kod zmiennej</option>
-        <option value="concept">Sortuj: concept_id</option>
-        <option value="topic">Sortuj: temat</option>
-        <option value="wave">Sortuj: fala</option>
+        <option value="code">Sort: code of variable</option>
+        <option value="concept">Sort: concept_id</option>
+        <option value="topic">Sortuj: topic</option>
+        <option value="wave">Sortuj: wave</option>
       </select>
     </div>
     <div class="cards" id="list"></div>
-    <div class="empty" id="empty" style="display:none">Brak wyników — zmień kryteria wyszukiwania.</div>
+    <div class="empty" id="empty" style="display:none">No results - try changing your search criteria.</div>
   </main>
 </div>
 <div class="scrim" id="scrim"></div>
@@ -371,28 +373,28 @@ function openDrawer(idx){
   </div>
   <div class="dbody">
     ${flagBox}
-    <div class="sec"><h4>Temat (ścieżka koncepcyjna)</h4><div class="path">${pathSegs||'—'}</div></div>
-    ${tagChips?`<div class="sec"><h4>Tagi</h4><div class="tagrow">${tagChips}</div></div>`:''}
+    <div class="sec"><h4>Topic (concept_path — 1. level)</h4><div class="path">${pathSegs||'—'}</div></div>
+    ${tagChips?`<div class="sec"><h4>Tags</h4><div class="tagrow">${tagChips}</div></div>`:''}
 
-    <div class="sec"><h4>Dostępność w falach</h4>
-      <table class="availtable"><thead><tr><th>Fala</th><th>Status / recodable</th></tr></thead>
+    <div class="sec"><h4>Availability in Waves</h4>
+      <table class="availtable"><thead><tr><th>Wave</th><th>Status / Recodable</th></tr></thead>
       <tbody>${availRows}</tbody></table>
       <div style="font-size:11.5px;color:var(--muted);margin-top:6px">„Tak" = obecne w formie rekodowalnej w tej fali · <code>INST_xxxx</code> = odpowiednik w tej fali (kliknij, by przejść) · „—" = brak odpowiednika.</div>
     </div>
 
-    <div class="sec"><h4>Kodowanie / skala odpowiedzi</h4>${coding}</div>
+    <div class="sec"><h4>Coding / Response Scale</h4>${coding}</div>
 
-    <div class="sec"><h4>Właściwości (model danych)</h4>
+    <div class="sec"><h4>Properties (Data Model)</h4>
       <dl class="kv">
         <dt>survey_name</dt><dd>${esc(r.survey_name)}</dd>
-        <dt>group_code</dt><dd><code>${esc(r.group_code||'—')}</code> <span style="color:var(--muted)">(blok w oryginalnym kwestionariuszu)</span></dd>
+        <dt>group_code</dt><dd><code>${esc(r.group_code||'—')}</code> <span style="color:var(--muted)">(block in the original questionnaire)</span></dd>
         <dt>data_origin</dt><dd>${esc(r.data_origin||'—')}</dd>
         <dt>data_type</dt><dd><code>${esc(r.data_type||'—')}</code></dd>
         <dt>scale_type</dt><dd>${esc(r.scale_type||'—')}</dd>
         <dt>answer_table</dt><dd><code>${esc(r.answer_table||'—')}</code></dd>
         <dt>definition_table</dt><dd><code>${esc(r.definition_table||'—')}</code></dd>
         <dt>key_role</dt><dd>${esc(r.key_role||'—')}</dd>
-        <dt>available_in</dt><dd>${esc(r.available_in||'—')} ${r.available_in==='SRS'?'<span style="color:var(--muted)">(już mamy w źródle administracyjnym — nie pytać ponownie)</span>':''}</dd>
+        <dt>available_in</dt><dd>${esc(r.available_in||'—')} ${r.available_in==='SRS'?'<span style="color:var(--muted)">(we already have it in the administrative source — don\'t ask again)</span>':''}</dd>
       </dl>
     </div>
 

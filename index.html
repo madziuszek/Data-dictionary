@@ -25,28 +25,28 @@
   .wrap{display:flex;gap:0;min-height:calc(100vh - 58px)}
 
   /* Sidebar filters */
-  aside{width:288px;flex:0 0 288px;background:var(--panel);border-right:1px solid var(--line);
+  aside{width:340px;flex:0 0 340px;background:var(--panel);border-right:1px solid var(--line);
     padding:16px 16px 40px;overflow-y:auto;max-height:calc(100vh - 58px);position:sticky;top:58px}
-  aside h3{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);
+  aside h3{font-size:12.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);
     margin:18px 0 8px;font-weight:700}
   aside h3:first-child{margin-top:0}
   .search-box{position:relative}
   .search-box input{width:100%;padding:10px 12px 10px 34px;border:1px solid var(--line);
-    border-radius:9px;font-size:14px;background:#fff}
+    border-radius:9px;font-size:15px;background:#fff}
   .search-box svg{position:absolute;left:10px;top:11px;width:16px;height:16px;fill:var(--muted)}
   .fgroup{display:flex;flex-direction:column;gap:3px}
   .fopt{display:flex;align-items:center;gap:8px;padding:5px 7px;border-radius:7px;cursor:pointer;
-    user-select:none;font-size:13px}
+    user-select:none;font-size:14px}
   .fopt:hover{background:var(--chip)}
   .fopt input{accent-color:var(--accent);width:15px;height:15px}
-  .fopt .cnt{margin-left:auto;color:var(--muted);font-size:11.5px;font-variant-numeric:tabular-nums}
+  .fopt .cnt{margin-left:auto;color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
   .tagcloud{display:flex;flex-wrap:wrap;gap:6px}
-  .tagcloud .tg{padding:4px 9px;border:1px solid var(--line);border-radius:999px;font-size:12px;
+  .tagcloud .tg{padding:5px 10px;border:1px solid var(--line);border-radius:999px;font-size:13px;
     cursor:pointer;background:#fff;transition:.12s}
   .tagcloud .tg:hover{border-color:var(--accent)}
   .tagcloud .tg.on{background:var(--accent);color:#fff;border-color:var(--accent)}
   .clear{margin-top:14px;width:100%;padding:8px;border:1px solid var(--line);background:#fff;
-    border-radius:8px;cursor:pointer;font-size:12.5px;color:var(--muted)}
+    border-radius:8px;cursor:pointer;font-size:13px;color:var(--muted)}
   .clear:hover{color:var(--ink);border-color:var(--muted)}
   /* Main list */
   main{flex:1;padding:16px 22px 60px;min-width:0}
@@ -148,9 +148,9 @@
     </div>
     <h3>Survey</h3><div class="fgroup" id="f-survey"></div>
     <h3>Wave</h3><div class="fgroup" id="f-wave"></div>
-    <h3>Variable type</h3><div class="fgroup" id="f-type"></div>
     <h3>Topic (concept_path — 1. level)</h3><div class="fgroup" id="f-topic"></div>
     <h3>Tags</h3><div class="tagcloud" id="f-tags"></div>
+    <h3>Variable type</h3><div class="fgroup" id="f-type"></div>
     <h3>Quality flags</h3><div class="fgroup" id="f-flags"></div>
     <button class="clear" id="clearBtn">Clear all filters</button>
   </aside>
